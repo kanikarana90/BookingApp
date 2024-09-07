@@ -1,0 +1,101 @@
+.background {
+  position: relative;
+  margin-top: 10px;
+  overflow: hidden;
+  height: 550px;
+}
+
+.backgr {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.overlay1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(26, 98, 160, 0.5), rgba(92, 141, 181, 0.5), rgba(210, 206, 117, 0.5), rgba(182, 176, 6, 0.5));
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-container {
+  width: 80%;
+  max-width: 1000px;
+  height: 400px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slick-slider {
+  height: 100%;
+}
+
+.slick-dots {
+  bottom: 20px;
+}
+
+.slick-arrow {
+  z-index: 999;
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.next-arrow {
+  right: 10px;
+}
+
+.prev-arrow {
+  left: 10px;
+}
+
+.slide1 {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.rating_r {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.cta_text {
+  padding: 20px;
+}
+
+.packbtn {
+  background: linear-gradient(to right, rgb(32, 101, 162), #dbc30c);
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  font-weight: bold;
+  font-size: larger;
+  border-radius: 5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.packbtn:hover {
+  background: linear-gradient(to right, #dbc30c, rgb(32, 101, 162));
+}
+

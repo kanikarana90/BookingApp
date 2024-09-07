@@ -1,0 +1,113 @@
+function showFlightForm() {
+    document.getElementById('flightForm').style.display = 'block';
+    document.getElementById('hotelForm').style.display = 'none';
+  }
+  
+  function showHotelForm() {
+    document.getElementById('flightForm').style.display = 'none';
+    document.getElementById('hotelForm').style.display = 'block';
+  }
+  
+  document.getElementById('flightBookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+    console.log('Flight Form Data:', data);
+    // Add flight form submission logic here
+  });
+  
+  document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+    console.log('Hotel Form Data:', data);
+    // Add hotel form submission logic here
+  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    showFlightForm(); // Show flight form by default on page load
+  });
+  let destinations = [];
+  
+      document.getElementsByName('tripType').forEach(radio => {
+        radio.addEventListener('change', function() {
+          const returnDateDiv = document.getElementById('returnDateDiv');
+          const addDestinationButton = document.getElementById('addDestinationButton');
+          const multiCityDestinations = document.getElementById('multiCityDestinations');
+  
+          if (this.value === 'oneway') {
+            returnDateDiv.style.display = 'none';
+            addDestinationButton.style.display = 'none';
+            multiCityDestinations.innerHTML = '';
+            destinations = [];
+            document.getElementById('returnDate').value = '';
+          } else if (this.value === 'roundtrip') {
+            returnDateDiv.style.display = 'block';
+            addDestinationButton.style.display = 'none';
+            multiCityDestinations.innerHTML = '';
+            destinations = [];
+          } else if (this.value === 'multiple') {
+            returnDateDiv.style.display = 'none';
+            addDestinationButton.style.display = 'block';
+            handleAddDestination();
+          }
+        });
+      });
+  
+      function handleAddDestination() {
+        const newDestination = { from: '', to: '', departureDate: '' };
+        destinations.push(newDestination);
+        renderDestinations();
+      }
+  
+      function handleRemoveDestination(index) {
+        destinations.splice(index, 1);
+        renderDestinations();
+      }
+  
+      function handleDestinationChange(index, field, value) {
+        destinations[index][field] = value;
+        renderDestinations();
+      }
+  
+      function renderDestinations() {
+        const multiCityDestinations = document.getElementById('multiCityDestinations');
+        multiCityDestinations.innerHTML = '';
+  
+        destinations.forEach((destination, index) => {
+          const destinationRow = document.createElement('div');
+          destinationRow.className = 'form-row mb-3';
+          destinationRow.innerHTML = `
+            <div class="col-md-3 form-group">
+              <label for="from${index}">From</label>
+              <input type="text" class="form-control" id="from${index}" value="${destination.from}" oninput="handleDestinationChange(${index}, 'from', this.value)" required>
+            </div>
+            <div class="col-md-3 form-group">
+              <label for="to${index}">To</label>
+              <input type="text" class="form-control" id="to${index}" value="${destination.to}" oninput="handleDestinationChange(${index}, 'to', this.value)" required>
+            </div>
+            <div class="col-md-3 form-group">
+              <label for="departureDate${index}">Departure Date</label>
+              <input type="date" class="form-control" id="departureDate${index}" value="${destination.departureDate}" oninput="handleDestinationChange(${index}, 'departureDate', this.value)" required>
+            </div>
+            <div class="col-md-3 form-group d-flex align-items-end">
+              <button type="button" class="btn btn-danger btn-remove-destination" onClick="handleRemoveDestination(${index})">Remove</button>
+            </div>
+          `;
+          multiCityDestinations.appendChild(destinationRow);
+        });
+      }
+  
+      document.getElementById('flightBookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+        data.destinations = destinations;
+        console.log('Form Data:', data);
+        // Add form submission logic here
+      });
+  
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('input[name="tripType"]:checked')?.dispatchEvent(new Event('change'));
+      });
+    </script>

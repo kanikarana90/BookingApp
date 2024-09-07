@@ -1,0 +1,112 @@
+
+.hotCardCont {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  height: 400px;
+}
+
+.hotcardimg img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.hotcardData {
+    padding-left: 20px;
+  flex: 1;
+}
+
+.hotdesc1 {
+  font-size: 15px;
+  color: #333;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.desc6 {
+  font-size: 14px;
+  color: #777;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.desc6 svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.reviews {
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.reviews svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.hoticon svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.hotcardprice {
+  background-color: #f8f8f8;
+  display: flex;
+  padding-left: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.deschot {
+  text-align: left;
+}
+
+.deschot h4 {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+.deschot h1 {
+  font-size: 28px;
+  color: #333;
+  margin: 5px 0;
+}
+
+.deschot h5 {
+  font-size: 12px;
+  color: #999;
+  margin: 0;
+}
+
+.butt button {
+  background-color: #7b1996;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-left: 50px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 20px;
+}
+
+.butt button:hover {
+  background-color: #0056b3;
+}
+.hotelListContainer{
+  display: flex;
+  flex-direction: column;
+}

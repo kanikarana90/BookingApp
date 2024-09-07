@@ -1,0 +1,1332 @@
+import React, { useState, useEffect, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons"; // Import icons from FontAwesome library
+import "./booking.css";
+
+const BookingForm = () => {
+  const [activeForm, setActiveForm] = useState("flights");
+
+  const renderForm = () => {
+    switch (activeForm) {
+      case "hotels":
+        return <HotelsForm />;
+      case "flights":
+        return <FlightsForm />;
+      // case "transfers":
+      //   return <TransfersForm />;
+      default:
+        return <FlightsForm />;
+    }
+  };
+
+  return (
+    <div className="booking-form-container">
+      <div className="button-group">
+        <button
+          onClick={() => setActiveForm("hotels")}
+          className={activeForm === "hotels" ? "active" : ""}
+        >
+          Hotels
+        </button>
+        <button
+          onClick={() => setActiveForm("flights")}
+          className={activeForm === "flights" ? "active" : ""}
+        >
+          Air Tickets
+        </button>
+        {/* <button
+    
+          onClick={() => setActiveForm("transfers")}
+          className={activeForm === "transfers" ? "active" : ""}
+        >
+          Transfers
+        </button> */}
+      </div>
+      <div className="form-content">{renderForm()}</div>
+    </div>
+  );
+};
+
+const HotelsForm = () => {
+  const [destination, setDestination] = useState("");
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+  const [rooms, setRooms] = useState(1);
+  const [citizenship, setCitizenship] = useState("");
+  const [starRating, setStarRating] = useState([]);
+  const [earlyCheckIn, setEarlyCheckIn] = useState("");
+  const [lateCheckOut, setLateCheckOut] = useState("");
+  const [freeCancellation, setFreeCancellation] = useState(false);
+
+  const handleStarRatingChange = (event) => {
+    const { value, checked } = event.target;
+    setStarRating((prev) =>
+      checked ? [...prev, value] : prev.filter((rating) => rating !== value)
+    );
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle the form submission
+    console.log({
+      destination,
+      checkIn,
+      checkOut,
+      rooms,
+      citizenship,
+      starRating,
+      earlyCheckIn,
+      lateCheckOut,
+      freeCancellation,
+    });
+  };
+
+  return (
+    <form className="booking-form" onSubmit={handleSubmit}>
+      <div className="form-section">
+        <div className="bookrow1">
+          <div className="form-group">
+            <label htmlFor="destination">Destination</label>
+            <input
+              type="text"
+              id="destination"
+              value={destination}
+              onChange={(e) => setDestination(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="checkIn">Check-IN</label>
+            <input
+              type="date"
+              id="checkIn"
+              value={checkIn}
+              onChange={(e) => setCheckIn(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="bookrow2">
+          <div className="form-group">
+            <label htmlFor="checkOut">Check-OUT</label>
+            <input
+              type="date"
+              id="checkOut"
+              value={checkOut}
+              onChange={(e) => setCheckOut(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="rooms">No of Rooms</label>
+            <input
+              type="number"
+              id="rooms"
+              value={rooms}
+              min="1"
+              onChange={(e) => setRooms(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="bookrow3">
+          <div className="form-groupbtn">
+            <button type="submit">Search</button>
+          </div>
+        </div>
+      </div>
+      <div className="part2">
+      <p>Additional Parameters</p>
+      </div>
+      
+      <div className="additional-parameters">
+        
+        <div className="form-group">
+          <label htmlFor="citizenship">Guest's Citizenship</label>
+          <input
+            type="text"
+            id="citizenship"
+            value={citizenship}
+            onChange={(e) => setCitizenship(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Star Rating</label>
+          <div className="checkbox-group">
+            {["no star", "2 star", "3 star", "4 star", "5 star"].map(
+              (rating) => (
+                <label key={rating}>
+                  <input
+                    type="checkbox"
+                    value={rating}
+                    checked={starRating.includes(rating)}
+                    onChange={handleStarRatingChange}
+                  />
+                  {rating}
+                </label>
+              )
+            )}
+          </div>
+        </div>
+        <div className="bookrow3">
+          <div className="form-group">
+            <label htmlFor="earlyCheckIn">Early Check-in</label>
+            <select
+              id="earlyCheckIn"
+              value={earlyCheckIn}
+              onChange={(e) => setEarlyCheckIn(e.target.value)}
+            >
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="lateCheckOut">Late Check-outt</label>
+            <select
+              id="lateCheckOut"
+              value={lateCheckOut}
+              onChange={(e) => setLateCheckOut(e.target.value)}
+            >
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="bookrow4">
+          <div className="form-group">
+            <label>
+              <input
+                type="checkbox"
+                checked={freeCancellation}
+                onChange={(e) => setFreeCancellation(e.target.checked)}
+              />
+              Free Cancellation
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  );
+};
+
+export default BookingForm;
+
+
+const FlightsForm = () => {
+  const [tripType, setTripType] = useState("one-way");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const [departureDate, setDepartureDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
+  const [destinations, setDestinations] = useState([]);
+  const [classType, setClassType] = useState([]);
+  const [airline, setAirline] = useState("");
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
+  const [infants, setInfants] = useState(0);
+
+  const handleAddDestination = () => {
+    setDestinations([...destinations, { from: "", to: "", departureDate: "" }]);
+  };
+
+  const handleRemoveDestination = (index) => {
+    const updatedDestinations = destinations.filter((_, i) => i !== index);
+    setDestinations(updatedDestinations);
+  };
+
+  const handleDestinationChange = (index, field, value) => {
+    const updatedDestinations = destinations.map((destination, i) =>
+      i === index ? { ...destination, [field]: value } : destination
+    );
+    setDestinations(updatedDestinations);
+  };
+
+  const handleChangeClassType = (type, checked) => {
+    setClassType(
+      checked ? [...classType, type] : classType.filter((t) => t !== type)
+    );
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // handle form submission
+  };
+
+  return (
+    <div className="flight-container">
+      <form onSubmit={handleSubmit}>
+        <div className="row1">
+          <label>
+            <input
+              type="radio"
+              value="one-way"
+              checked={tripType === "one-way"}
+              onChange={() => setTripType("one-way")}
+            />
+            One Way
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="roundtrip"
+              checked={tripType === "roundtrip"}
+              onChange={() => setTripType("roundtrip")}
+            />
+            Roundtrip
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="multiple"
+              checked={tripType === "multiple"}
+              onChange={() => setTripType("multiple")}
+            />
+            Multiple Destinations
+          </label>
+        </div>
+
+        <div className="row2">
+          <div className="fromCont">
+            <input
+              type="text"
+              value={from}
+              onChange={(e) => setFrom(e.target.value)}
+              placeholder="From"
+              required
+            />
+          </div>
+          <div className="toCont">
+            <input
+              type="text"
+              value={to}
+              onChange={(e) => setTo(e.target.value)}
+              placeholder="To"
+              required
+            />
+          </div>
+          <div className="departCont">
+            <input
+              type="date"
+              value={departureDate}
+              onChange={(e) => setDepartureDate(e.target.value)}
+              placeholder="Departure Date"
+              required
+            />
+          </div>
+          {tripType == "roundtrip" && (
+            <div className="row2">
+              <div className="returnCont">
+                <input
+                  type="date"
+                  value={returnDate}
+                  onChange={(e) => setReturnDate(e.target.value)}
+                  placeholder="Return Date"
+                  required
+                />
+              </div>
+              {/* Add input fields for number of adults, infants, and children */}
+              {/* Replace placeholder text with appropriate labels */}
+            </div>
+          )}
+
+          <div className="form-group2Cont">
+            <div className="form-group2">
+              <label>
+                Adults
+                <input
+                  type="number"
+                  value={adults}
+                  onChange={(e) => setAdults(e.target.value)}
+                  min="1"
+                  required
+                />
+              </label>
+            </div>
+            <div className="form-group2">
+              <label>
+                Children
+                <input
+                  type="number"
+                  value={children}
+                  onChange={(e) => setChildren(e.target.value)}
+                  min="0"
+                />
+              </label>
+            </div>
+            <div className="form-group2">
+              <label>
+                Infants
+                <input
+                  type="number"
+                  value={infants}
+                  onChange={(e) => setInfants(e.target.value)}
+                  min="0"
+                />
+              </label>
+            </div>
+          </div>
+        </div>
+
+        {tripType === "multiple" &&
+          destinations.map((destination, index) => (
+            <div key={index} className="row2">
+              <div className="fromCont">
+                <input
+                  type="text"
+                  value={destination.from}
+                  onChange={(e) =>
+                    handleDestinationChange(index, "from", e.target.value)
+                  }
+                  placeholder="From"
+                  required
+                />
+              </div>
+              <div className="toCont">
+                <input
+                  type="text"
+                  value={destination.to}
+                  onChange={(e) =>
+                    handleDestinationChange(index, "to", e.target.value)
+                  }
+                  placeholder="To"
+                  required
+                />
+              </div>
+              <div className="departCont">
+                <input
+                  type="date"
+                  value={destination.departureDate}
+                  onChange={(e) =>
+                    handleDestinationChange(
+                      index,
+                      "departureDate",
+                      e.target.value
+                    )
+                  }
+                  placeholder="Departure Date"
+                  required
+                />
+              </div>
+              <div className="destination-controls">
+                <button
+                  type="button"
+                  className="btn-remove-destination"
+                  onClick={() => handleRemoveDestination(index)}
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          ))}
+
+        {tripType === "multiple" && (
+          <div className="row3">
+            <button
+              type="button"
+              onClick={handleAddDestination}
+              className="btn-add-destination"
+            >
+              <span className="plus-icon">+</span> Add Destination
+            </button>
+          </div>
+        )}
+
+        <div className="row4">
+          <div className="fltTypeCont">
+            <div className="custom-radio">
+              <input
+                type="radio"
+                id="radio1"
+                name="radio-group"
+                value="option1"
+              />
+              <label htmlFor="radio1">
+                <span>Economy</span>
+              </label>
+            </div>
+            <div className="custom-radio">
+              <input
+                type="radio"
+                id="radio2"
+                name="radio-group"
+                value="option2"
+              />
+              <label htmlFor="radio2">
+                <span>Premium</span>
+              </label>
+            </div>
+            <div className="custom-radio">
+              <input
+                type="radio"
+                id="radio3"
+                name="radio-group"
+                value="option3"
+              />
+              <label htmlFor="radio3">
+                <span>Business</span>
+              </label>
+            </div>
+            <div className="custom-radio">
+              <input
+                type="radio"
+                id="radio4"
+                name="radio-group"
+                value="option4"
+              />
+              <label htmlFor="radio4">
+                <span>First</span>
+              </label>
+            </div>
+          </div>
+
+          <div className="form-group3">
+            <input
+              type="text"
+              value={airline}
+              onChange={(e) => setAirline(e.target.value)}
+              placeholder="Airline"
+            />
+          </div>
+          <button type="submit" className="btnmulti">
+            Search Flights
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+// const TransfersForm = () => (
+//   <div className="form-section">
+//     <h2>Book a Transfer</h2>
+//     <form>
+//       <div>
+//         <label>Pickup Location</label>
+//         <input type="text" name="pickup" />
+//       </div>
+//       <div>
+//         <label>Drop-off Location</label>
+//         <input type="text" name="dropoff" />
+//       </div>
+//       <div>
+//         <label>Date</label>
+//         <input type="date" name="date" />
+//       </div>
+//       <div>
+//         <label>Time</label>
+//         <input type="time" name="time" />
+//       </div>
+//       <button type="submit">Search Transfers</button>
+//     </form>
+//   </div>
+// );
+
+export default BookingForm;
+.booking-form-container {
+  display: flex;
+  width: 1200px;
+  padding: 20px;
+  border-radius: 10px;
+  margin-left: 120px;
+  margin-top: 90px;
+  
+  flex-direction: column;
+  align-items: flex-start; /* Align items at the top left */
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adjust the gap between buttons as needed */
+}
+
+.button-group button {
+  padding: 10px 20px;
+  background-color: transparent; /* Set background color to transparent */
+  color: #007bff; /* Set button color to blue */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Add transition effect */
+  width: 100px;
+}
+
+.button-group button.active {
+  background-color: #ffffff; /* Change background color for active button */
+  color: #000000; /* Change text color for active button */
+  border-radius: 10px 10px 2px 2px;
+  height: 57px;
+}
+
+
+
+.button-group button:not(.active) {
+  background-color: #e0e0e09f;
+  color: #ffffff;
+  height: 50px;
+  margin-bottom: 7px;
+}
+
+
+.form-section h2 {
+  margin-bottom: 20px;
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section form label {
+  margin-bottom: 5px;
+}
+
+.form-section form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-section form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-section form button:hover {
+  background-color: #0056b3;
+}
+
+.destCol{
+  display: flex;
+}
+.destCol2{
+  display: flex;
+}
+.col1 {
+  display: flex;
+  align-items: center;
+}
+.hotelcon{
+  display: flex;
+}
+.btn-primary {
+  margin-top: 30px;
+  margin-left: 20px;
+  padding: 12px 20px;
+  border-radius: 15px;
+  border: none;
+  background: linear-gradient(to right, #dbc30c, rgb(32, 101, 162));
+}
+.heading2{
+  font-weight: 100;
+  font-size: 15px;
+  width: 200px;
+}
+.form-section{
+  background-color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  padding-left: 20px;
+  padding-right: 10px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px 5px 10px 5px;
+}
+.addpara1 {
+  display: flex;
+}
+.addelem {
+  margin-right: 20px;
+  margin-top: 15px;
+}
+
+.addpara{
+  display: flex;
+}
+.hotel-rating {
+  display: flex;
+  align-items: center;
+}
+.hotel-rating input[type="checkbox"] {
+  display: none;
+}
+
+.hotel-rating label {
+  margin-right: 10px;
+  cursor: pointer;
+  border: 1px solid rgb(218, 218, 218);
+  width: 80px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding-left: 15px;
+  padding-top: 7px;
+}
+
+.hotel-rating input[type="checkbox"] + label::before {
+  content: "";
+  display: inline-block;
+  width: 20px; /* Adjust as needed */
+  height: 20px; /* Adjust as needed */
+  border: 1px solid #ccc;
+  background-color: #fff;
+  text-align: center;
+  line-height: 20px; /* Center text vertically */
+}
+
+.hotel-rating input[type="checkbox"]:checked + label::before {
+  background-color: #007bff; /* Change to desired color */
+  color: #fff; /* Change to desired color */
+}
+.form-group {
+  position: relative;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-right: 20px;
+  width: 100%;
+}
+
+.form-group label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background-color: #fff;
+  padding: 0 5px;
+  font-size: 14px;
+  color: #777;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group select:focus + label,
+.form-group select:not(:placeholder-shown) + label {
+  top: 5px;
+  font-size: 12px;
+  background-color: #fff;
+  padding: 0 10px;
+  color: #333;
+}
+.HotelType {
+  display: flex;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+.checkInCont{
+  margin-left: 10px;
+}
+.checkOutCont{
+  margin-left: 10px;
+}
+.room-input {
+  position: relative;
+}
+
+.room-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.room-header input[type="text"] {
+  width: 100%;
+  padding: 10px;
+}
+
+.room-popup {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.room-popup button {
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.room-popup span {
+  margin: 0 10px;
+}
+
+
+.form-label {
+  position: absolute;
+  top: -10px; /* Adjust the top position as needed */
+  left: 10px; /* Adjust the left position as needed */
+  background-color: white; /* Optional: to make the label more visible */
+  padding: 0 5px; /* Optional: adjust padding as needed */
+  font-weight: lighter; /* Optional: adjust font styles as needed */
+}
+
+.HotelType label {
+  position: relative;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 1px solid rgb(216, 216, 216);
+  cursor: pointer;
+  padding-left: 10px;
+  width: 55px;
+  height: 40px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  padding-top: 10px;
+  transition: border-color 0.3s;
+}
+
+/* Hide checkbox inputs */
+.HotelType input[type="checkbox"] {
+  display: none;
+}
+
+/* Tooltip */
+.HotelType label::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.HotelType label:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Outline label when checkbox is checked */
+.HotelType input[type="checkbox"]:checked + label {
+  border-color: blue;
+}
+
+
+.bottomPara {
+  display: flex;
+  margin-top: 10px;
+}
+.special1 {
+  margin-right: 20px;
+}
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-container input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-container label {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* Style the custom checkbox */
+.checkbox-container input[type="checkbox"] + label::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+/* Style the custom checkbox when checked */
+.checkbox-container input[type="checkbox"]:checked + label::before {
+  background-color: #007bff;
+}
+
+/* Style the checkmark */
+.checkbox-container input[type="checkbox"] + label::after {
+  content: "\2713"; /* Checkmark symbol */
+  display: none;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  line-height: 16px;
+}
+
+/* Show the checkmark when the checkbox is checked */
+.checkbox-container input[type="checkbox"]:checked + label::after {
+  display: inline-block;
+}
+/* ---------------------flights------------------- */
+.flight-container {
+  margin: auto;
+  background: white;
+  width: 1000px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.row1, .row2, .row3 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-group1 {
+  width: 70px;
+  display: table-cell;
+}
+.row1 label{
+  margin-right: 30px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type='text'],
+input[type='date'],
+input[type='number'],
+input[type='checkbox'] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.fromCont{
+  width: 350px;
+}
+.toCont{
+  width: 350px;
+}
+.departCont{
+  width: 250px;
+  margin-left: 15px;
+}
+.returnCont{
+  margin-top: 20px;
+  margin-left: 10px;
+ 
+}
+.form-group2Cont{
+  display: flex;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+.form-group3{
+  width: 300px
+}
+.row3{
+  justify-content: center;
+  align-items: center;
+}
+.btnp {
+  display: block;
+  width: 160px;
+  padding: 12px;
+  border: none;
+  margin-left: 30px;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer
+}
+.destination-controls {
+  margin-bottom: 10px;
+}
+
+.add-destination {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-add-destination,
+.btn-remove-destination {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-add-destination {
+  background-color: #28a745;
+  color: white;
+  margin-top: 13px;
+}
+
+.btn-add-destination .plus-icon {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.btn-remove-destination {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-remove-destination:hover,
+.btn-add-destination:hover {
+  opacity: 0.8;
+}
+.row4{
+  display: flex;
+}
+.btnmulti{
+  width: 200px;
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+.fltTypeCont {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.custom-radio{
+  margin-right: 60px;
+  border: 2px solid #dedede;
+  width: 90px;
+  height: 50px;
+  padding: 10px;
+  cursor: pointer;
+}
+.custom-radio:hover{
+  background: #f2f2f2;
+}
+.custom-radio input[type="radio"] {
+  display: none;
+}
+
+/* Style for the custom radio button label */
+.custom-radio label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Style for the colorful underline */
+.custom-radio label span {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 5px; /* Add space for the underline */
+}
+
+.custom-radio label span::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px; /* Adjust thickness of the underline */
+  background-color: #2c88c6; /* Change color of the underline */
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease; /* Add smooth transition effect */
+}
+
+/* Show the underline when radio button is checked */
+.custom-radio input[type="radio"]:checked + label span::after {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./booking.css"
+
+const BookingForm = () => {
+  const [bookingType, setBookingType] = useState('hotel'); // State to manage booking type
+
+  const [hotelFormData, setHotelFormData] = useState({
+    destination: '',
+    checkIn: '',
+    checkOut: '',
+    rooms: 1,
+    // Add more fields as needed
+  });
+
+  const [flightFormData, setFlightFormData] = useState({
+    destination: '',
+    departureDate: '',
+    arrivalDate: ''
+    // Add more fields as needed
+  });
+
+  const handleChangeHotel = (e) => {
+    const { name, value } = e.target;
+    setHotelFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleChangeFlight = (e) => {
+    const { name, value } = e.target;
+    setFlightFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleBookingType = (type) => {
+    setBookingType(type);
+  };
+
+  const handleSubmitHotel = (e) => {
+    e.preventDefault();
+    // Handle hotel form submission
+    console.log('Hotel Form submitted:', hotelFormData);
+    // Implement further logic here for hotel form submission
+  };
+
+  const handleSubmitFlight = (e) => {
+    e.preventDefault();
+    // Handle flight form submission
+    console.log('Flight Form submitted:', flightFormData);
+    // Implement further logic here for flight form submission
+  };
+
+  return (
+    <div className="container mt-5">
+      <div className="btnBook">
+        <button
+          type="button"
+          className={`btn px-4 py-3 btn-${bookingType === 'hotel' ? 'primary' : 'secondary'}`}
+          onClick={() => handleBookingType('hotel')}
+        >
+          Hotels
+        </button>
+        <button
+          type="button"
+          className={`btn px-4 py-3 btn-${bookingType === 'flight' ? 'primary' : 'secondary'}`}
+          onClick={() => handleBookingType('flight')}
+        >
+          Air Ticket
+        </button>
+      </div>
+
+      {bookingType === 'hotel' && (
+        <form onSubmit={handleSubmitHotel}>
+          <div className="card p-4 mb-4">
+            <div className="form-group row mb-3">
+              <label className="col-md-2 col-form-label">Destination</label>
+              <div className="col-md-10">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="destination"
+                  value={hotelFormData.destination}
+                  onChange={handleChangeHotel}
+                  required
+                />
+              </div>
+            </div>
+            <div className="form-group row mb-3">
+              <label className="col-md-2 col-form-label">Check-in Date</label>
+              <div className="col-md-4">
+                <input
+                  type="date"
+                  className="form-control"
+                  name="checkIn"
+                  value={hotelFormData.checkIn}
+                  onChange={handleChangeHotel}
+                  required
+                />
+              </div>
+              <label className="col-md-2 col-form-label">Check-out Date</label>
+              <div className="col-md-4">
+                <input
+                  type="date"
+                  className="form-control"
+                  name="checkOut"
+                  value={hotelFormData.checkOut}
+                  onChange={handleChangeHotel}
+                  required
+                />
+              </div>
+            </div>
+            <div className="form-group row mb-3">
+              <label className="col-md-2 col-form-label">Rooms</label>
+              <div className="col-md-4">
+                <input
+                  type="number"
+                  className="form-control"
+                  name="rooms"
+                  value={hotelFormData.rooms}
+                  onChange={handleChangeHotel}
+                  min="1"
+                  required
+                />
+              </div>
+            </div>
+            <button type="submit" className="btn btn-primary">Search Hotels</button>
+          </div>
+        </form>
+      )}
+
+      {bookingType === 'flight' && (
+        <form onSubmit={handleSubmitFlight}>
+          <div className="card p-4 mb-4">
+            <div className="form-group row mb-3">
+              <label className="col-md-2 col-form-label">From</label>
+              <div className="col-md-10">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="destination"
+                  value={flightFormData.destination}
+                  onChange={handleChangeFlight}
+                  required
+                />
+              </div>
+            </div>
+            <div className="form-group row mb-3">
+              <label className="col-md-2 col-form-label">Destination</label>
+              <div className="col-md-10">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="destination"
+                  value={flightFormData.destination}
+                  onChange={handleChangeFlight}
+                  required
+                />
+              </div>
+            </div>
+            <div className="form-group row mb-3">
+              <label className="col-md-2 col-form-label">Departure Date</label>
+              <div className="col-md-4">
+                <input
+                  type="date"
+                  className="form-control"
+                  name="departureDate"
+                  value={flightFormData.departureDate}
+                  onChange={handleChangeFlight}
+                  required
+                />
+              </div>
+              <label className="col-md-2 col-form-label">Arrival Date</label>
+              <div className="col-md-4">
+                <input
+                  type="date"
+                  className="form-control"
+                  name="arrivalDate"
+                  value={flightFormData.arrivalDate}
+                  onChange={handleChangeFlight}
+                  required
+                />
+              </div>
+            </div>
+            <button type="submit" className="btn btn-primary">Search Flights</button>
+          </div>
+        </form>
+      )}
+    </div>
+  );
+};
+
+export default BookingForm;
+/* Custom CSS for BookingForm */
+.container {
+  max-width: 800px; /* Adjust based on your design */
+  margin: auto;
+  padding: 20px;
+  background-color: transparent; /* Light background */
+  border-radius: 8px;
+  margin-top: 40px;
+}
+
+.btn {
+  margin-right: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+}
+
+.btn-hotels {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+}
+
+.btn-flights {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #fff;
+}
+
+.btn-hotels:hover,
+.btn-hotels:focus {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-flights:hover,
+.btn-flights:focus {
+  background-color: #495057;
+  border-color: #495057;
+}
+.card {
+  background-color: #ffffff; /* White background for form cards */
+  border: 1px solid #dee2e6; /* Light border */
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.btnBook {
+  display: flex;
+  margin-bottom: 1em;
+}
+.btn-primary {
+  background-color: #007bff; /* Primary button color */
+  border-color: #007bff;
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Secondary button color */
+  border-color: #6c757d;
+}
+
+.btn {
+  color: #ffffff; /* Button text color */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Space between form groups */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .col-md-2,
+  .col-md-4,
+  .col-md-10 {
+    padding: 0;
+  }
+}

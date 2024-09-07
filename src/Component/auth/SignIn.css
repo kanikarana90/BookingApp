@@ -1,0 +1,75 @@
+/* SignIn.css */
+.auth_back{
+  height: 729px;
+  background: linear-gradient(to left, rgba(26, 97, 160, 0.908), rgba(92, 141, 181, 0.5), rgba(210, 206, 117, 0.5), rgba(213, 207, 17, 0.684));
+}
+
+.signin-container {
+  max-width: 400px;
+  padding: 20px;
+  margin-left: 550px;
+  padding-top: 250px;
+  border-radius: 5px;
+}
+
+.signin-container h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #fff; /* Set label text color to white */
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff; /* Set input background color to dark gray */
+  color: #fff; /* Set input text color to white */
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+}
+
+.signin-button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signin-button:hover {
+  background-color: #0056b3;
+}
+
+.signup-link {
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.signup-link a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}

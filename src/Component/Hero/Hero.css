@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+
+.homeC {
+  position: relative;
+  height: 550px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.homeContent {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  text-align: center;
+  padding: 0 20px; /* Add padding for better appearance on small screens */
+}
+
+.textDiv {
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.homeTitle {
+  font-size: 4rem; /* Adjusted for responsiveness */
+  font-family: 'Allura', serif;
+  font-weight: 300;
+}
+
+.smallText {
+  font-size: 2rem; /* Adjusted for responsiveness */
+  font-weight: bolder;
+}
+
+.bookform {
+  width: 100%;
+  z-index: 2;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1000px) {
+  .homeC{
+    height: 700px;
+    width: 931px;
+  }
+}
+@media (max-width: 768px) {
+  .homeC{
+    height: 1000px;
+    width: 800px;
+  }
+  .homeTitle {
+    font-size: 3rem;
+  }
+
+  .smallText {
+    font-size: 1.5rem;
+  }
+  .homeContent {
+    position: absolute;
+    top: 360px;
+    left: 380px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
+}
+}
+
+@media (max-width: 576px) {
+  .homeTitle {
+    font-size: 2.5rem;
+  }
+
+  .smallText {
+    font-size: 1.2rem;
+  }
+}

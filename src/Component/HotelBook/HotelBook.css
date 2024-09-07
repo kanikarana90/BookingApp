@@ -1,0 +1,198 @@
+/* HotelBook.css */
+
+.hotelCont {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.hotelimg {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-image: url("../../assets/HotelPage3.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 500px; /* Default height for smaller screens */
+}
+.boldTopic{
+  color: white;
+  position: fixed;
+  margin-left: 550px;
+  margin-top: 250px;
+  font-size: 110px;
+}
+.hotel-card {
+  width: 300px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.hotel-card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.hotel-card h3 {
+  margin-top: 10px;
+}
+
+.hotel-card p {
+  margin-bottom: 0;
+}
+
+/* -------------------------------------------------------- */
+.Hotelbox1 {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(72, 150, 210);
+  padding: 20px;
+  height: 150px;
+  width: 1350px;
+  margin-top: 50px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+.hBox1 {
+  color: white;
+  margin-right: 10px;
+  flex: 2;
+  padding: 30px;
+}
+
+.hBox2, .hBox3, .hBox4 {
+  background-color: rgb(33, 92, 137);
+  color: white;
+  margin-right: 10px;
+  padding-top: 20px;
+  flex: 1;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+.Hicon {
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 35px;
+}
+
+/* --------------------------------------- */
+.hotelcardsType {
+  display: flex;
+  margin: 50px;
+}
+
+.Hcard1 {
+  margin: 10px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.Hcard1 img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.Hcard1:hover img {
+  transform: scale(1.1);
+}
+
+.Hcard1 .text {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+/* ------------------------------------------------ */
+.UniqueCont {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+  
+}
+
+.Ucon {
+  text-align: center;
+  height: 70px;
+  font-size: 20px;
+}
+
+.UniqCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.destinationCard1,
+.destinationCard2,
+.destinationCard3,
+.destinationCard4,
+.destinationCard5 {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 250px;
+}
+
+
+.destinationImage {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.destinationDetails {
+  padding: 15px;
+}
+
+.destinationName {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.destinationAddress {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.destinationRating {
+  margin-bottom: 10px;
+}
+
+.destinationRating span {
+  color: #ffcc00; /* Set color for stars or rating */
+}
+
+.destinationPrices {
+  margin-bottom: 10px;
+}
+
+.pricePerNight,
+.totalPrice {
+  margin: 5px 0;
+}
+
+.memberPriceTag {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+

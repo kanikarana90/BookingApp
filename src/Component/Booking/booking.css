@@ -1,0 +1,147 @@
+.form-container1 {
+  max-width: 1200px;
+  width: 100%;
+  height: 400px;
+  background-color: transparent;
+  padding-bottom: 100px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+#flightBookingForm{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+.form-row{
+  display: flex;
+}
+.mb-3{
+  display: flex;
+}
+.form-group label {
+  font-weight: bold;
+}
+.form-check-label {
+  margin-left: 5px;
+}
+.custom-radio {
+  display: inline-block;
+  margin-right: 10px;
+}
+.btn-group {
+  margin-bottom: 20px;
+}
+.plus-icon {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+.btn-add-destination {
+  display: inline-flex;
+  align-items: center;
+}
+.btn-remove-destination {
+  margin-top: auto;
+}
+#flightForm,
+#hotelForm{
+  border: 2px solid #ddd;
+  padding: 30px;
+}
+.form-control1{
+  background: white;
+  width: 45px;
+  border: 2px solid #ddd;
+}
+.passengers{
+  display: flex;
+}
+.input-groupBook{
+  display: flex;
+}
+.col-md-4 {
+  width: 120px;
+  gap: 10px;
+  margin-right: 40px;
+}
+.pass{
+  display: flex;
+}
+#hotelBookingForm{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+/* -------------------------- */
+.row1A
+{
+  width: 800px;
+    display: flex;
+    align-items: center;
+}
+.row1B{
+  width: 800px;
+    display: flex;
+    align-items: center;
+}
+.col-md-4B{
+  width: 400px;
+}
+.ButtonHt{
+  width: 200px;
+  margin-top: 15px;
+}
+.mb-3{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+@media (max-width: 768px) {
+  .passengers{
+    display: flex;
+    flex-direction: column;
+  }
+  #originB{
+    display: flex;
+    flex-direction: column;
+  }
+  .form-row {
+    flex-wrap: wrap;
+  }
+  .pass{
+    display: flex;
+  }
+  #origin {
+    
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+    color: #333;
+}
+.row1A
+{
+  display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.row2B{
+  display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.col-md-3 {
+  flex: 0 0 auto;
+}
+#hotelBookingForm {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+}
+@media (min-width: 768px) {
+  .col-md-3 {
+      flex: 0 0 auto;
+      width: 24%;
+  }
+}

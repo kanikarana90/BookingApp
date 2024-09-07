@@ -1,0 +1,108 @@
+.discountCont {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-image: url('../../assets/cave.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 500px; /* Default height for smaller screens */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.boxcont {
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.Disrow1 {
+  color: aliceblue;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.disrow2 {
+  color: aliceblue;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+}
+
+.disrow3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.discemail {
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  border: none;
+  border-radius: 5px;
+}
+
+.discbutton {
+  width: 100%;
+  max-width: 150px;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  background-color: #f04e30; /* Adjust as needed */
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .discountCont {
+    height: 800px;
+        width: 800px;
+}
+
+  .Disrow1 {
+    font-size: 20px;
+  }
+
+  .disrow2 {
+    font-size: 14px;
+  }
+}
+@media (max-width: 450px){
+  .discountCont {
+    width: 788px;
+    height: 500px;
+}
+}
+@media (max-width: 400px) {
+  .discountCont {
+    height: 900px;
+  }
+
+  .Disrow1 {
+    font-size: 18px;
+  }
+
+  .disrow2 {
+    font-size: 12px;
+  }
+
+  .discemail {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .discbutton {
+    max-width: 100%;
+  }
+}

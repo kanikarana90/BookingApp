@@ -1,0 +1,334 @@
+/* FranceTrip.css */
+
+  /* France.css */
+
+.france-trip-container {
+  position: relative;
+}
+
+.france-image {
+  width: 100%;
+  height: 730px;
+}
+.france-trip-header {
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+}
+
+.overlay1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(26, 98, 160, 0.5), rgba(92, 141, 181, 0.5), rgba(210, 206, 117, 0.5), rgba(182, 176, 6, 0.5));
+  z-index: 1; /* Ensure the overlay is above the image */
+}
+
+
+.france-title1 {
+  position: absolute;
+    top: 300px;
+    left: 447px;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    z-index: 1;
+    font-weight: 100;
+}
+.france-title2 {
+  position: absolute;
+    top: 350px;
+    left: 474px;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 5rem;
+    text-align: center;
+    z-index: 1;
+    font-weight: 100;
+}
+/*-----------------BOOKING FORM-----------------------  */
+.hotel-booking-bar {
+  background-color: #fff;
+    position: absolute;
+    border: 5px solid rgb(194, 177, 19);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    top: 500px;
+    left: 50px;
+    z-index: 999;
+}
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  height: 44px;
+  background: rgb(194, 177, 19);
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group input {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  color: black;
+  width: 190px;
+  height: 45px;
+}
+
+.search-button {
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(to left, rgb(26, 97, 160), rgb(92, 141, 181), rgb(210, 205, 117), rgb(182, 176, 6));
+  color: #fff;
+  cursor: pointer;
+  width: 150px;
+  height: 40px;
+  margin-top: 2px;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+
+.france-trip-info {
+  background-color: #f8f9fa;
+  padding-left: 20px;
+  padding-right: 20px;
+  
+}
+
+.info-text {
+  position: absolute;
+    top: 445px;
+    left: 497px;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: left;
+    z-index: 1;
+    width: 400px;
+}
+
+.france-trip-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-text {
+  font-size: 18px;
+  color: #333;
+}
+
+.book-now-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book-now-button:hover {
+  background-color: #0056b3;
+}
+
+/* ------------------------TOP DESTINATIONS--------------------------------- */
+.topdest {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.heading {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+/* --------------------DESTINATION CARD -------------------------- */
+.destination-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.destination-card1 {
+  margin: 20px;
+  width: 450px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.destination-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.destination-info {
+  padding: 20px;
+}
+
+.destination-name {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.destination-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.explore-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.explore-button:hover {
+  background-color: #0056b3;
+}
+/* -------------------TIME CONTAINER----------------------- */
+.time-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px; /* Adjust spacing as needed */
+}
+
+.heading {
+  text-align: center;
+}
+
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Adjust spacing between heading and content */
+  padding: 10px;
+}
+
+.time-image {
+  max-width: 300px; /* Adjust image size as needed */
+  margin-right: 20px; /* Adjust spacing between image and text */
+}
+
+.time-info {
+  max-width: 400px; /* Adjust text width as needed */
+  line-height: 20px;
+}
+/* -------------------HOTEL BOOKING---------------------------------- */
+.hotels {
+  text-align: center;
+  padding: 50px 0;
+  background: rgb(221, 234, 238);
+}
+
+.heading {
+  margin-bottom: 30px;
+}
+
+.hotel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  
+}
+
+.hotel-card {
+  margin: 20px;
+}
+
+.hotel-image {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-info {
+  text-align: left;
+}
+
+.hotel-name {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+.num{
+  margin: 0;
+  padding: 0;
+}
+/* ---------------------notes------------------------ */
+.notes{
+  padding: 20px;
+  width: 90rem;
+  border: 1px solid #b4b4b4;
+  border-radius: 0.5rem;
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+/* ----------------------FOOTER-------------------- */
+.footer {
+  background-color: #062235;
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  width: 30%;
+}
+
+.footer-section h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  border-top: 1px solid #555555;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}

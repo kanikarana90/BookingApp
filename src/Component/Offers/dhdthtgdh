@@ -1,0 +1,113 @@
+  {
+    id: 6,
+    title: "Beach Holiday",
+    description:
+      "Spend your days relaxing on the sandy beaches with stunning ocean views.",
+    image: beachHoliday,
+    price: "$1,000",
+  },
+  {
+    id: 7,
+    title: "Cultural Experience",
+    description:
+      "Dive into rich cultural experiences with local guides and immersive activities.",
+    image: culturalExperience,
+    price: "$1,800",
+  },
+  {
+    id: 8,
+    title: "Ski Trip",
+    description:
+      "Hit the slopes with our all-inclusive ski trip packages to top destinations.",
+    image: skiTrip,
+    price: "$2,000",
+  },
+  {
+    id: 9,
+    title: "Wildlife Tour",
+    description:
+      "Get up close with nature on our exciting wildlife tours and safaris.",
+    image: wildlifeTour,
+    price: "$1,500",
+  },
+  {
+    id: 10,
+    title: "Island Getaway",
+    description:
+      "Escape to a private island for the ultimate relaxation experience.",
+    image: islandGetaway,
+    price: "$2,200",
+  },
+  {
+    id: 11,
+    title: "Rainforest Expedition",
+    description:
+      "Explore the dense rainforests with guided tours and adventurous treks.",
+    image: rainforestExpedition,
+    price: "$2,500",
+  },
+  {
+    id: 12,
+    title: "Cruise Vacation",
+    description:
+      "Enjoy a luxurious cruise vacation with all-inclusive amenities.",
+    image: cruiseVacation,
+    price: "$3,000",
+  },
+  {
+    id: 13,
+    title: "Historical Journey",
+    description:
+      "Travel back in time with our historical journey packages to ancient sites.",
+    image: historicalJourney,
+    price: "$1,700",
+  },
+  {
+    id: 14,
+    title: "Northern Lights",
+    description:
+      "Witness the mesmerizing Northern Lights with our exclusive tour.",
+    image: northernLights,
+    price: "$2,800",
+  },
+  {
+    id: 15,
+    title: "Safari Adventure",
+    description:
+      "Experience the thrill of a safari adventure in Africa's top wildlife parks.",
+    image: safariAdventure,
+    price: "$2,400",
+  },
+  {
+    id: 16,
+    title: "Wine Tour",
+    description:
+      "Indulge in the finest wines with our comprehensive wine tour packages.",
+    image: wineTour,
+    price: "$1,200",
+  },
+  {
+    id: 17,
+    title: "Adventure Travel",
+    description:
+      "Get your adrenaline pumping with our extreme adventure travel packages.",
+    image: adventureTravel,
+    price: "$2,600",
+  },
+  {
+    id: 18,
+    title: "Spa Retreat",
+    description:
+      "Rejuvenate your body and mind with our luxurious spa retreat packages.",
+    image: spaRetreat,
+    price: "$1,400",
+  },
+  {
+    id: 19,
+    title: "Cultural Festival",
+    description:
+      "Experience vibrant cultural festivals around the world with our guided tours.",
+    image: culturalFestival,
+    price: "$1,900",
+  },
+];

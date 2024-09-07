@@ -1,0 +1,104 @@
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+@font-face
+{
+	font-family: 'Beyond';
+	src: url('../fonts/beyond_the_mountains.otf')  format('truetype'),
+		 url('../fonts/beyond_the_mountains.ttf')  format('opentype');
+}
+
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body{
+    overflow: hidden;
+  }
+  :root {
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(201, 33%, 16%);
+    --textColor: hsl(240, 3%, 36%);
+    --whiteColor: hsl(0, 0%, 93%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: rgb(239, 239, 239);
+    --bodyColor: rgb(240, 240, 246);
+    --cardBG: rgb(225, 225, 235);
+  }
+
+  a{
+    text-decoration: none;
+  }
+  li{
+    list-style: none;
+  }
+  .section{
+    padding: 4rem 0 2rem;
+  }
+  .container{
+   padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    width: 100%;
+  }
+  .icon{
+    width: 250px;
+    cursor: pointer;
+  }
+  .flex{
+    display: flex;
+    align-items: center;
+  }
+  .grid{
+    display: grid;
+    align-items: centre;
+  }
+
+  
+.heading {
+  text-align: center;
+  padding-top: 30px;
+  color: rgb(14, 77, 79);
+}
+.heading12{
+  text-align: center;
+  padding-top: 30px;
+  color: rgb(14, 77, 79);
+  margin-left: 200px;
+}
+  /* ----------Styling the button---------------------- */
+
+
+  
+  .btn:hover {
+    background-color: #FFA500; /* Darker yellow on hover */
+    color: #fff; /* White text color on hover */
+  }
+  .btn a{
+    color: rgb(6, 38, 58);
+    font-weight: 500;
+  }
+  .btn:hover {
+    color: white;
+    background: gray; 
+    }
+
+  img,video{
+    width: 100%;
+    height: auto;
+  }
+  input{
+    font-size: 100%;
+  }
+  body{
+    background: var(--whiteColor);
+    overflow: auto;
+  }
+  
+  
+  
+
+  

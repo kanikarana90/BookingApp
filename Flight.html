@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Form</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container form-container">
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary" onclick="showFlightForm()">Flight Booking</button>
+      <button type="button" class="btn btn-primary" onclick="showHotelForm()">Hotel Booking</button>
+    </div>
+
+    <div id="flightForm">
+      <form id="flightBookingForm">
+        <!-- Step 1 -->
+        <div id="step1">
+          <div class="form-row mb-3">
+            <div class="custom-radio">
+              <input type="radio" id="oneway" name="tripType" value="oneway" required>
+              <label for="oneway">One-way</label>
+            </div>
+            <div class="custom-radio">
+              <input type="radio" id="roundtrip" name="tripType" value="roundtrip" required>
+              <label for="roundtrip">Round-trip</label>
+            </div>
+            <div class="custom-radio">
+              <input type="radio" id="multiple" name="tripType" value="multiple" required>
+              <label for="multiple">Multi-city</label>
+            </div>
+          </div>
+
+          <div class="form-row mb-3">
+            <div class="col-md-3 form-group">
+              <label for="origin">Origin</label>
+              <input type="text" class="form-control" id="origin" name="origin" required>
+            </div>
+            <div class="col-md-3 form-group">
+              <label for="destination">Destination</label>
+              <input type="text" class="form-control" id="destination" name="destination" required>
+            </div>
+            <div class="col-md-3 form-group">
+              <label for="departureDate">Departure Date</label>
+              <input type="date" class="form-control" id="departureDate" name="departureDate" required>
+            </div>
+            <div class="col-md-3 form-group" id="returnDateDiv">
+              <label for="returnDate">Return Date</label>
+              <input type="date" class="form-control" id="returnDate" name="returnDate">
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div id="step2" style="display: none;">
+          <div class="form-row mb-3">
+            <div class="col-md-3 form-group">
+              <label for="passengers">Passengers</label>
+              <select class="form-control" id="passengers" name="passengers" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div class="col-md-3 form-group">
+              <label for="class">Class</label>
+              <select class="form-control" id="class" name="class" required>
+                <option value="economy">Economy</option>
+                <option value="premium">Premium</option>
+                <option value="business">Business</option>
+                <option value="first">First Class</option>
+              </select>
+            </div>
+            <div class="form-row mb-3">
+              <div class="col-md-12 form-group">
+                <label for="airline">Preferred Airline</label>
+                <input type="text" class="form-control" id="airline" name="airline">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="multiCityDestinations"></div>
+
+        <div id="addDestinationButton" class="row3" style="display: none;">
+          <button type="button" onClick="handleAddDestination()" class="btn btn-secondary btn-add-destination">
+            <span class="plus-icon">+</span> Add Destination
+          </button>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="form-row mt-3">
+          <div id="prevButton" style="display: none;">
+            <button type="button" class="btn btn-secondary" onclick="showStep('step1')">Previous</button>
+          </div>
+          <div class="ml-auto">
+            <button type="button" class="btn btn-primary" onclick="showStep('step2')">Next</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mt-3">Search Flights</button>
+      </form>
+    </div>
+
+    <div id="hotelForm" style="display: none;">
+      <form id="bookingForm">
+        <div class="row mb-3">
+          <div class="col-md-3 form-group">
+            <label for="destination">Destination</label>
+            <input type="text" class="form-control" id="destination" name="destination" required>
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="checkin">Check-in</label>
+            <input type="date" class="form-control" id="checkin" name="checkin" required>
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="checkout">Check-out</label>
+            <input type="date" class="form-control" id="checkout" name="checkout" required>
+          </div>
+          <div class="col-md-2 form-group">
+            <label for="rooms">Rooms</label>
+            <select class="form-control" id="rooms" name="rooms" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="col-md-1 form-group d-flex align-items-end">
+            <button type="submit" class="btn btn-primary btn-block">Search</button>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12">
+            <h5>Additional Parameters</h5>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-3 form-group">
+            <label for="citizenship">Guest's Citizenship</label>
+            <input type="text" class="form-control" id="citizenship" name="citizenship">
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="earlyCheckin">Early Check-in</label>
+            <input type="date" class="form-control" id="earlyCheckin" name="earlyCheckin">
+          </div>
+          <div class="col-md-3 form-group">
+            <label for="earlyCheckout">Early Checkout</label>
+            <input type="date" class="form-control" id="earlyCheckout" name="earlyCheckout">
+          </div>
+          <div class="col-md-3 form-check d-flex align-items-end">
+            <input type="checkbox" class="form-check-input" id="freeCancellation" name="freeCancellation">
+            <label class="form-check-label" for="freeCancellation">Free Cancellation</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+function showStep(stepId) {
+  const step1 = document.getElementById('step1');
+  const step2 = document.getElementById('step2');
+  const prevButton = document.getElementById('prevButton');
+
+  if (stepId === 'step1') {
+    step1.style.display = 'block';
+    step2.style.display = 'none';
+    prevButton.style.display = 'none';
+  } else if (stepId === 'step2') {
+    step1.style.display = 'none';
+    step2.style.display = 'block';
+    prevButton.style.display = 'block';
+  }
+}
+
+function showFlightForm() {
+  document.getElementById('flightForm').style.display = 'block';
+  document.getElementById('hotelForm').style.display = 'none';
+}
+
+function showHotelForm() {
+  document.getElementById('flightForm').style.display = 'none';
+  document.getElementById('hotelForm').style.display = 'block';
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  // Show flight form by default on page load
+  showFlightForm();
+
+  // Check screen size on load and resize
+  checkScreenSize();
+  window.addEventListener('resize', checkScreenSize);
+});
+
+function checkScreenSize() {
+  const screenWidth = window.innerWidth;
+  const step2 = document.getElementById('step2');
+  const nextButton = document.querySelector('.btn-primary');
+
+  if (screenWidth < 500) {
+    step2.style.display = 'none';
+    nextButton.addEventListener('click', function () {
+      showStep('step2');
+    });
+  } else {
+    step2.style.display = 'block';
+  }
+}
+
+  </script>
+  <script src="scripts.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+<style>
+.form-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.form-group label {
+  font-weight: bold;
+}
+.form-check-label {
+  margin-left: 5px;
+}
+.custom-radio {
+  display: inline-block;
+  margin-right: 10px;
+}
+.btn-group {
+  margin-bottom: 20px;
+}
+
+</style>
+</html>

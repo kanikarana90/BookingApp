@@ -1,0 +1,155 @@
+import React, { useRef } from "react";
+import "./Test.css";
+import next_icon from "../../assets/next-icon.png";
+import back_icon from "../../assets/back-icon.png";
+import user_1 from "../../assets/Owner.jpeg";
+import user_2 from "../../assets/user-2.jpg";
+import user_3 from "../../assets/user-3.jpg";
+import user_4 from "../../assets/user-4.jpg";
+
+const Test = () => {
+  const slider = useRef(null); // useRef to access the slider element
+  let tx = 0; // Initial translation value
+
+  // Function to slide forward
+  const slideForward = () => {
+    if (tx > -25) { // Adjust this condition based on your slide count
+      tx -= 25; // Slide by full container width (for 1 slide)
+    }
+    slider.current.style.transform = `translateX(${tx}%)`;
+  };
+
+  // Function to slide backward
+  const slideBackward = () => {
+    if (tx < 0) {
+      tx += 25; // Slide by full container width (for 1 slide)
+    }
+    slider.current.style.transform = `translateX(${tx}%)`;
+  };
+
+  return (
+    <div className="test">
+      {/* Navigation buttons */}
+      <img src={back_icon} alt="Back" className="back-btn" onClick={slideBackward} />
+      <img src={next_icon} alt="Next" className="next-btn" onClick={slideForward} />
+
+      {/* Testimonial slider */}
+      <div className="slider">
+        <ul ref={slider} className="slide-container">
+          {/* Testimonial items */}
+          <li key="user1" className="slide">
+            <div className="user-info">
+              <img src={user_1} alt="User 1" />
+              <div>
+                <h3>L.S. Yadav</h3>
+                <span>Founder of GO24Online</span>
+              </div>
+            </div>
+            <p>
+              As the founder of our flight, hotel, and transfer booking website, I am humbled by the journey we've embarked on. What started as a vision to simplify travel has blossomed into a platform that empowers adventurers worldwide. Our dedication to innovation, coupled with our passion for travel, drives us every day. We're committed to providing seamless experiences, leveraging technology to exceed expectations. With every click, we're redefining travel, making it more accessible, enjoyable, and memorable for all.
+            </p>
+          </li>
+          <li key="user2" className="slide">
+            <div className="user-info">
+              <img src={user_2} alt="User 2" />
+              <div>
+                <h3>William</h3>
+                <span>XYZ, Dubai</span>
+              </div>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, nisi sequi nobis quibusdam officia repellat, totam voluptas, aliquid autem nam similique dignissimos sapiente tempore fuga ullam? Quidem reprehenderit fugiat facere tenetur at eos sint voluptatum! Ipsa delectus ex, atque sapiente pariatur at maiores inventore dignissimos recusandae beatae mollitia sequi error incidunt qui deserunt porro soluta.
+            </p>
+          </li>
+          <li key="user3" className="slide">
+            <div className="user-info">
+              <img src={user_3} alt="User 3" />
+              <div>
+                <h3>Jake</h3>
+                <span>JF Gue, Dubai</span>
+              </div>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, tenetur aut qui esse voluptas aliquam soluta dolorum. Hic veniam id, quos reiciendis rerum odit nihil ducimus, repudiandae vel eveniet quam assumenda quasi dicta sequi laudantium expedita saepe aspernatur provident odio quidem nam perferendis. Recusandae minima beatae sint accusantium molestias molestiae.
+            </p>
+          </li>
+          <li key="user4" className="slide">
+            <div className="user-info">
+              <img src={user_4} alt="User 4" />
+              <div>
+                <h3>Mark</h3>
+                <span>T&T, USA</span>
+              </div>
+            </div>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, sunt doloremque eius deleniti quam suscipit corporis quas ratione expedita quaerat laboriosam commodi consequuntur at placeat asperiores tempore quia ipsum temporibus excepturi inventore? Id natus voluptatum cupiditate, tempora at architecto harum porro nulla nisi explicabo similique quam vel hic qui excepturi?
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default Test;
+#testtimonial{
+  overflow: hidden;
+}
+.test{
+    margin-left: 80px;
+    margin-right: 80px;
+    padding: 0 80px;
+    position: relative;
+}
+.next-btn,.back-btn{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 15px;
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #212EA0;
+}
+.back-btn{
+    right: auto;
+    left: 0;
+}
+.slider{
+    overflow: hidden;
+}
+.slider ul{
+    display: flex;
+    width: 200%;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+.slider ul li{
+    list-style: none;
+    width: 50%;
+    padding: 20px;
+}
+.slide{
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    padding: 40px;
+    border-radius: 10px;
+    color: #676767;
+    line-height: 1.4;
+}
+.slide img{
+    width: 65px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 4px solid #141944;
+}
+.user-info{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+.user-info h3{
+    color: #212EA0;
+}

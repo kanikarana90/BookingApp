@@ -1,0 +1,238 @@
+/* General Styles */
+.Navbar {
+  position: fixed; /* Fixed position so it stays at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure the navbar is above other content */
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.Navbar.transparent {
+  background-color: transparent !important;
+}
+
+.Navbar.solid {
+  background-color: #343a4000 !important; /* Dark background color */
+}
+
+/* Top Navbar */
+.navbar-top {
+  background-color: #f8f9fa; /* Light background */
+  padding: 0.5rem 1rem;
+}
+
+.navbar-top .navbar-brand img {
+  height: 40px;
+}
+
+.navbar-top .nav-link {
+  color: #000; /* Black text color */
+  margin-left: 1rem;
+}
+
+.navbar-top .nav-link:hover {
+  color: #007bff; /* Blue text color on hover */
+}
+
+/* Main Navbar */
+.navbar-main {
+  background-color: #343a40; /* Dark background */
+}
+
+.navbar-main .navbar-brand {
+  color: #fff; /* White text color */
+}
+
+.navbar-main .navbar-nav .nav-link {
+  color: #fff !important; /* White text color */
+}
+
+.navbar-main .navbar-nav .nav-link:hover {
+  color: #007bff; /* Blue text color on hover */
+}
+
+.navbar-main .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-main .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-main .dropdown-menu {
+  background-color: #343a40;
+  border: none;
+}
+
+.navbar-main .dropdown-item {
+  color: #fff;
+}
+
+.navbar-main .dropdown-item:hover {
+  color: #007bff;
+  background-color: transparent;
+}
+
+.navbar-main .form-control {
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: #495057;
+  color: #fff;
+}
+
+.navbar-main .btn-outline-success {
+  color: #fff;
+  border-color: #28a745;
+}
+
+.navbar-main .btn-outline-success:hover {
+  color: #fff;
+  background-color: #28a745;
+}
+
+.navbar-brand {
+  padding-top: var(--bs-navbar-brand-padding-y);
+  padding-bottom: var(--bs-navbar-brand-padding-y);
+  margin-right: var(--bs-navbar-brand-margin-end);
+  width: 270px;
+  font-size: revert-layer;
+  color: var(--bs-navbar-brand-color);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.bg-light {
+  --bs-bg-opacity: 1;
+  background-color: rgba(2, 20, 29, 0.86) !important;
+}
+
+/* Ensure nav-links are always white */
+.navbar-nav .nav-link {
+  color: #fff !important;
+}
+
+.faNav {
+    display: flex;
+    font: normal normal normal 14px / 1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    justify-content: flex-end;
+    color: white;
+    font-size: 40px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.stripe-popup {
+	position: fixed;
+	top: 10%; /* Adjust as needed */
+	left: 75%;
+	transform: translateX(-50%);
+	z-index: 1000;
+	background-color: #fff;
+	padding: 20px;
+	border: 1px solid #ccc;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .close-button {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	outline: none;
+  }
+  .close-button:hover {
+	background: transparent;
+  }
+  
+  .close-button i {
+	font-size: 20px;
+	color: #777;
+  }
+  .contact-popup {
+    display: flex;
+    justify-content: flex-end;
+    background: transparent;
+    height: 100%;
+}
+.contact-popup-content{
+	background: white;
+	padding: 50px;
+}
+
+.contact-form {
+	margin-top: 50px;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+  }
+  
+  .contact-form textarea {
+	resize: vertical;
+  }
+  
+  .submit-button {
+	background-color: #007bff;
+	color: #ffffff;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	border-radius: 4px;
+	font-size: 16px;
+  }
+  
+  .submit-button:hover {
+	background-color: #0056b3;
+  }
+  
+  .submission-status {
+	margin-top: 20px;
+	text-align: center;
+  }
+  
+  .submission-status span {
+	display: block;
+	margin-bottom: 10px;
+  }
+  
+  .close-status {
+	background: none;
+	border: none;
+	cursor: pointer;
+  }
+  
+  .close-status i {
+	color: #777777;
+  }
+  
+  @media (max-width: 600px) {
+	.contact-popup {
+	  width: 90%;
+	}
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 767.98px) {
+	.navbar-top .navbar-brand img {
+	  height: 30px;
+	}
+  
+	.navbar-main .navbar-nav {
+	  text-align: center;
+	}
+  
+	.navbar-main .form-control {
+	  margin-bottom: 0.5rem;
+	}
+  }
+  
